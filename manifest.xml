@@ -3,12 +3,12 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
   xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="MailApp">
-  <Id>3b548b2c-48d0-4ca9-b746-aefe4140a89c</Id>
-  <Version>1.0.0.0</Version>
+  <Id>47c7a5c2-290c-473b-9ec3-59b5496ea974</Id>
+  <Version>1.0.1.0</Version>
   <ProviderName>Leruplund</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Jakobs add-in for mobil"/>
-  <Description DefaultValue="A template to get started."/>
+  <DisplayName DefaultValue="Jakob's Amazing Add-in 2"/>
+  <Description DefaultValue="Hopefully it works for Outlook mobile."/>
   <IconUrl DefaultValue="https://xinkoutlookaddin-development.azurewebsites.net/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://xinkoutlookaddin-development.azurewebsites.net/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://xinkoutlookaddin-development.azurewebsites.net/help"/>
@@ -70,23 +70,15 @@
                       <SourceLocation resid="Taskpane.Url"/>
                     </Action>
                   </Control>
-                  <Control xsi:type="Button" id="ActionButton">
-                    <Label resid="ActionButton.Label"/>
-                    <Supertip>
-                      <Title resid="ActionButton.Label"/>
-                      <Description resid="ActionButton.Tooltip"/>
-                    </Supertip>
-                    <Icon>
-                      <bt:Image size="16" resid="Icon.16x16"/>
-                      <bt:Image size="32" resid="Icon.32x32"/>
-                      <bt:Image size="80" resid="Icon.80x80"/>
-                    </Icon>
-                    <Action xsi:type="ExecuteFunction">
-                      <FunctionName>action</FunctionName>
-                    </Action>
-                  </Control>
                 </Group>
               </OfficeTab>
+            </ExtensionPoint>
+            <ExtensionPoint xsi:type="LaunchEvent">
+              <LaunchEvents>
+                <LaunchEvent Type="OnNewMessageCompose" FunctionName="onNewMessageComposeHandler"/>
+              </LaunchEvents>
+              <!-- Identifies the runtime to be used (also referenced by the Runtime element). -->
+              <SourceLocation resid="WebViewRuntime.Url"/>
             </ExtensionPoint>
           </DesktopFormFactor>
           <!-- Defines the add-in for Outlook mobile. -->
@@ -111,18 +103,16 @@
           <bt:Image id="Icon.80x80" DefaultValue="https://xinkoutlookaddin-development.azurewebsites.net/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="Commands.Url" DefaultValue="https://xinkoutlookaddin-development.azurewebsites.net/commands.html"/>
+          <bt:Url id="Commands.Url" DefaultValue="https://xinkoutlookaddin-development.azurewebsites.net/commands_2.html"/>
           <bt:Url id="Taskpane.Url" DefaultValue="https://xinkoutlookaddin-development.azurewebsites.net/taskpane.html"/>
-          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://xinkoutlookaddin-development.azurewebsites.net/commands.html"/>
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://xinkoutlookaddin-development.azurewebsites.net/commands_2.html"/>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GroupLabel" DefaultValue="Event-based activation on mobile"/>
           <bt:String id="TaskpaneButton.Label" DefaultValue="Show Taskpane"/>
-          <bt:String id="ActionButton.Label" DefaultValue="Perform an action"/>
         </bt:ShortStrings>
         <bt:LongStrings>
           <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane displaying all available properties."/>
-          <bt:String id="ActionButton.Tooltip" DefaultValue="Perform an action when clicked."/>
         </bt:LongStrings>
       </Resources>
     </VersionOverrides>
